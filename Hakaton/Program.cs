@@ -8,7 +8,7 @@ namespace Hakaton
 {
     internal class Program
     {
-
+        
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -25,12 +25,15 @@ namespace Hakaton
 
 
 
+
+
             Console.ReadKey();
         }
 
 
-        async static Task Update(ITelegramBotClient botClient, Update update, CancellationToken token)
+        async static Task Update(ITelegramBotClient botClient, Update update, CancellationToken token) // update method
         {
+
             var message = update.Message;
             if (update.Message != null)
             {
@@ -42,8 +45,8 @@ namespace Hakaton
                         case "/start":
                             StartButton("/start");
                             break;
-                        case "вернуться":
-                            StartButton("Вернуться");
+                        case "вернуться🔙":
+                            StartButton("Вернуться🔙");
                             break;
 
                         case "обучение📈":
@@ -58,46 +61,51 @@ namespace Hakaton
                             CompanyButton();
                             break;
 
-                        case "ваши обязанности":
-                            await botClient.SendTextMessageAsync(message.Chat.Id, "Вы вступили к нам в коллектив и теперь вы будете работать над улучшением языка С--. Вашей команде будет приходить запрос на улучшение, доработку, создание новой функции в языке. И вы вместе с командой должны будете выполнить запрос, после нужно будет составить запрос на тест (пример составления запроса есть в меню). Надеемся вам понравится у нас работать.");
+                        case "запросить помощь🙏":
+                            await botClient.SendTextMessageAsync(message.Chat.Id, "Запрос отправлен, ждите ответа.😉");
                             break;
 
-                        case "почта для отправки":
-                            await botClient.SendTextMessageAsync(message.Chat.Id, "Вот список почт для связи с отделом тестирования, отдел аналитики, главным менеджером: \nOtdelTest@yandex.ru \nOtdelAnalit@yandex.ru \nManager312@yandex.ru");
+                        case "обязанности📋":
+                            Photo("обязанности📋");
+                            //  await botClient.SendTextMessageAsync(message.Chat.Id, "Вы вступили к нам в коллектив и теперь вы будете работать над улучшением языка С--. Вашей команде будет приходить запрос на улучшение, доработку, создание новой функции в языке. Затем вы и ваши коллеги должны будете выполнить задание, после нужно будет составить запрос на тест (пример составления запроса есть в меню). Надеемся вам понравится у нас работать.");
                             break;
 
-                        case "пример оформления запроса":
-                            await botClient.SendTextMessageAsync(message.Chat.Id, "Оформить запрос очень легко, вам нужно будет заполнить каждый пункт и отправить на почту в отдел тестирования. \nПример офрмления: \n1) Цель изменения/разработки \n2) Что было изменено/добавлено \n3) Добавочная информация (если она имеется)");
+                        case "адресы почты📨":
+                            Photo("адресы почты📨");
+                            // await botClient.SendTextMessageAsync(message.Chat.Id, "Вот список адресов почты для связи с отделом тестирования, отдел аналитики, главным менеджером: \nOtdelTest@yandex.ru 📬 \nOtdelAnalit@yandex.ru 📬 \nManager312@yandex.ru 📬");
                             break;
 
-                        case "офис":
-                            Photo("офис");
-                            break;
-                        case "коллеги":
-                            Photo("коллеги");
-                            break;
-                        case "адрес офиса":
-                            await botClient.SendTextMessageAsync(message.Chat.Id, "Офис в БЦ \"Бенуа\"");
+                        case "пример📄":
+                            await botClient.SendTextMessageAsync(message.Chat.Id, "Оформить запрос очень легко, вам нужно будет заполнить каждый пункт и отправить на почту в отдел тестирования. ✅ \nПример офрмления: \n1️⃣ Цель изменения/разработки \n2️⃣ Что было изменено/добавлено \n3️⃣ Добавочная информация (если она имеется)");
                             break;
 
-                        case "продукты компании":
-                            await botClient.SendTextMessageAsync(message.Chat.Id, "Наша компания создала и продолжает улучшать язык C--, СУБД SQLS, пакет офисных программ, в него входит текстовый процессор Wort, табличный процессор Essel");
+                        case "офис🏢":
+                            Photo("офис🏢");
                             break;
 
-                        case "самый популярный продукт":
-                            await botClient.SendTextMessageAsync(message.Chat.Id, "Самый популярный продукт нашей компании - это операционная система Окно. Ей пользуются большая часть населения земли. Вышедшие версии: Окно 1, Окно 2, Окно 3");
+                        case "коллеги👨‍💼":
+                            Photo("коллеги👨‍💼");
                             break;
 
-                        case "история компании":
-                            await botClient.SendTextMessageAsync(message.Chat.Id, "Наша компания появилась в 2023 году и сразу стала популярной.");
+                        case "адрес офиса🗺️":
+                            Photo("адрес офиса🗺️");
+                            break;
+
+                        case "продукты компании💼":
+                            Photo("продукты компании💼");
+                            //await botClient.SendTextMessageAsync(message.Chat.Id, "Наша компания создала и продолжает улучшать язык C--, СУБД SQLS, пакет офисных программ, в него входит текстовый процессор Wort, табличный процессор Essel");
+                            break;
+
+                        case "самый популярный продукт💫":
+                            Photo("самый популярный продукт💫");
+                            //await botClient.SendTextMessageAsync(message.Chat.Id, "Самый популярный продукт нашей компании - это операционная система Окно. Ей пользуются большая часть населения земли. Вышедшие версии: Окно 1, Окно 2, Окно 3");
+                            break;
+
+                        case "история компании🏛️":
+                            await botClient.SendTextMessageAsync(message.Chat.Id, "Наша компания появилась в 2023 году и сразу стала популярной. 👍");
                             break;
 
                     }
-
-
-
-
-
                 }
             }
 
@@ -107,33 +115,38 @@ namespace Hakaton
             {
                 string[][] strings = new[] {
                 new[]{ "Обучение📈","Офис и сотрудники👥"},
-                 new[]{ "Компания и продукты🏬" }
+                 new[]{ "Компания и продукты🏬", "Запросить помощь🙏" }
                 };
 
                 ReplyKeyboardMarkup keyboardMarkup = strings;
                 keyboardMarkup.ResizeKeyboard = true;
                 if (a == "/start")
-                    await botClient.SendTextMessageAsync(message.Chat.Id, "Здравствуйте, я бот, который должен помочь вам в обучении своим должностям, знакомству с офисом, коллективом и продукцией нашей компании", replyMarkup: keyboardMarkup);
-                if (a == "Вернуться")
-                    await botClient.SendTextMessageAsync(message.Chat.Id, "Выберите то, о чём вам рассказать.", replyMarkup: keyboardMarkup);
+                {
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1\bot.jpg");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "bot.jpg"), caption: "🤗🤗🤗 \nЗдравствуйте, я 🤖, который должен помочь 🫵 в обучении своим должностям, знакомству с офисом🏢, коллективом👥 и продукцией нашей компании📋", replyMarkup: keyboardMarkup);
+                    // await botClient.SendTextMessageAsync(message.Chat.Id, "🤗🤗🤗 \nЗдравствуйте, я 🤖, который должен помочь 🫵 в обучении своим должностям, знакомству с офисом🏢, коллективом👥 и продукцией нашей компании📋", replyMarkup: keyboardMarkup);
+                }
+                if (a == "Вернуться🔙")
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Выберите то, о чём вам рассказать. 🙂", replyMarkup: keyboardMarkup);
                 return;
             }
             async void TichButton()
             {
                 string[][] strings = new[]
                 {
-                    new[]{"Ваши обязанности", "Почта для отправки", "Пример оформления запроса", "Вернуться"}
+                    new[]{ "Обязанности📋", "Адресы почты📨" },
+                    new[]{ "Пример📄", "Вернуться🔙" }
                 };
                 ReplyKeyboardMarkup keyboardMarkup = strings;
                 keyboardMarkup.ResizeKeyboard = true;
                 await botClient.SendTextMessageAsync(message.Chat.Id, "Позвольте объяснить вам задачи которые вы будете выполнять и полезную в дальнейшем информацию", replyMarkup: keyboardMarkup);
             }
-            //
+
             async void OfficAndSotr_Button()
             {
                 string[][] strings = new[] {
-                new[]{ "Офис","Коллеги"},
-                 new[]{ "Адрес офиса", "Вернуться" }
+                new[]{ "Офис🏢", "Коллеги👨‍💼"},
+                 new[]{ "Адрес офиса🗺️", "Вернуться🔙" }
                 };
 
                 ReplyKeyboardMarkup keyboardMarkup = strings;
@@ -148,8 +161,8 @@ namespace Hakaton
             {
                 string[][] strings = new[]
                 {
-                    new[]{"Продукты компании", "Самый популярный продукт"},
-                    new[]{"История компании", "Вернуться"}
+                    new[]{ "Продукты компании💼", "Самый популярный продукт💫"},
+                    new[]{ "История компании🏛️", "Вернуться🔙" }
                 };
                 ReplyKeyboardMarkup keyboardMarkup = strings;
                 keyboardMarkup.ResizeKeyboard = true;
@@ -158,43 +171,64 @@ namespace Hakaton
             }
             async void Photo(string a)
             {
-                if (a == "офис")
+                if (a == "офис🏢")
                 {
-                    await using Stream stream = System.IO.File.OpenRead(@"Resurses\Offis\RabMesto.jpg");
-                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "RabMesto.jpg"), caption: "Это твое будущее рабочее место.");
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1Offis\RabMesto.png");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "RabMesto.png"), caption: "Вы можете взять свой ноутбук и работать в любом месте просторного офиса. В случае отсутствия ноутбука, мы можем его выдать.");
 
-                    await using Stream stream1 = System.IO.File.OpenRead(@"Resurses\Offis\Relax.jpg");
-                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream1, fileName: "Relax.jpg"), caption: "Тут ты сможешь поиграть с колегами в тенис, плойку либо же просто почитать книги");
+                    await using Stream stream1 = System.IO.File.OpenRead(@"Resurses1\Offis\Relax.jpg");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream1, fileName: "Relax.jpg"), caption: "После выполнения сложного проекта нужно раслабиться, отдохнуть и привести мысли в порядок. Для этого у нас есть комнаты отдыха.");
 
-                    await using Stream stream2 = System.IO.File.OpenRead(@"Resurses\Offis\Sbor.jpg");
-                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream2, fileName: "Sbor.jpg"), caption: "Тут ты обслуждаем дальнейшее движение компании и ее направление");
+                    await using Stream stream2 = System.IO.File.OpenRead(@"Resurses1\Offis\Sbor.jpg");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream2, fileName: "Sbor.jpg"), caption: "Также у нас имеются комнаты для общих собраний и переговоров о дальнейшом ходе действий, направлениях развития и постановления чётких задач.");
+
+                    await using Stream stream3 = System.IO.File.OpenRead(@"Resurses1\Offis\Kitchen.png");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream3, fileName: "Kitchen.png"), caption: "Если вы сильно проголодались, то можете в любой момент придти и уталить свой голод.");
                 }
 
-                if (a == "коллеги")
+                if (a == "коллеги👨‍💼")
                 {
-                    await using Stream stream = System.IO.File.OpenRead(@"Resurses\Piple\ocr1.jpg");
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1\Piple\ocr1.jpg");
                     await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "ocr1.jpg"), caption: "Коментарий:\"Привет я главый контент менаджер нашей компании \"");
 
-                    await using Stream stream1 = System.IO.File.OpenRead(@"Resurses\Piple\ocr2.jpg");
+                    await using Stream stream1 = System.IO.File.OpenRead(@"Resurses1\Piple\ocr2.jpg");
                     await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream1, fileName: "ocr1.jpg"), caption: "Коментарий:\"Привет я главный системный админестратор \"");
 
-                    await using Stream stream2 = System.IO.File.OpenRead(@"Resurses\Piple\ocr3.jpg");
+                    await using Stream stream2 = System.IO.File.OpenRead(@"Resurses1\Piple\ocr3.jpg");
                     await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream2, fileName: "ocr3.jpg"), caption: "Коментарий:\"Привет я fullStak разработчик \"");
 
+                }
+                if (a == "адрес офиса🗺️")
+                {
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1\Offis\Adres.png");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "Adres.png"), caption: "Офис в БЦ \"Бенуа\"");
+                }
+                if (a == "обязанности📋")
+                {
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1\Product\C--.png");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "Adres.png"), caption: "Вы вступили к нам в коллектив и теперь вы будете работать над улучшением языка С--. 🛠️ \nВашей команде будет приходить запрос на улучшение, доработку, создание новой функции в языке. Затем вы и ваши коллеги должны будете выполнить задание, после нужно будет составить запрос на тест (пример составления запроса есть в меню). 📝 \nНадеемся вам понравится у нас работать. 😘");
+                }
+                if (a == "адресы почты📨")
+                {
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1\Product\Mail.jpg");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "Adres.png"), caption: "Вот список адресов почты для связи с отделом тестирования, отдел аналитики, главным менеджером: \nOtdelTest@yandex.ru 📬 \nOtdelAnalit@yandex.ru 📬 \nManager312@yandex.ru 📬");
+                }
+                if (a == "продукты компании💼")
+                {
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1\Product\Products.jpg");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "Products.jpg"), caption: "Наша компания создала и продолжает улучшать язык C--, СУБД SQLS Server 💾, пакет офисных программ, в него входит текстовый процессор Wort 📝, табличный процессор Exccel 📊");
+                }
+                if (a == "самый популярный продукт💫")
+                {
+                    await using Stream stream = System.IO.File.OpenRead(@"Resurses1\Product\Wind.png");
+                    await botClient.SendPhotoAsync(message.Chat.Id, new InputOnlineFile(stream, fileName: "Adres.png"), caption: "Самый популярный продукт нашей компании - это операционная система Форточка.🖥️ Ей пользуются большая часть населения земли.🌏 Вышедшие версии: Форточка 10, Форточка 11, Форточка 12");
                 }
             }
         }
 
         private static Task Error(ITelegramBotClient arg1, Exception arg2, CancellationToken arg3)
         {
-
             throw new NotImplementedException();
-
-
         }
     }
-
-
-
-
 }
